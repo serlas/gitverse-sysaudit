@@ -1,0 +1,18 @@
+[Unit]
+Description=SysAudit Monitor Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /path/to/GitVerse_Task_1/sysaudit.py monitor --watch /etc --watch /usr/local/bin --repo /var/lib/sysaudit --daemon --gpg
+Restart=always
+RestartSec=5
+User=root
+Group=root
+WorkingDirectory=/path/to/GitVerse_Task_1
+StandardOutput=journal
+StandardError=journal
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
